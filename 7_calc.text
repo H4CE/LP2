@@ -1,0 +1,53 @@
+public class anotherCalc1 {
+    public double val1 {get;set;}
+    public double val2 {get;set;}
+    public double result {get;set;}
+    public string err{get;set;}
+    
+    
+    
+    public void addition()
+    {
+		result=val1+val2;
+    }
+    public void division()
+    {
+        try{
+            result=val1/val2;
+        }
+        catch(exception e){
+			result=-1;
+            err='can not divide by zero';
+        }
+    }  
+}
+
+
+<apex:page docType="html-5.0" controller="anotherCalc1" >
+    <apex:sectionHeader title="Calculator"/>
+    
+    <apex:form>
+    <apex:pageBlock>
+        
+        <apex:pageBlockSection>
+            <apex:outputLabel>Enter First Number</apex:outputLabel>
+            <apex:input type="number" value="{!val1}"/>
+            
+            <apex:outputLabel>Enter Second Number</apex:outputLabel>
+            <apex:input type="number" value="{!val2}"/>
+        </apex:pageBlockSection>
+        	
+        <apex:pageBlockSection>
+            <apex:outputLabel>Result</apex:outputLabel>
+        	 <apex:outputLabel value="{!result}"></apex:outputLabel>
+        
+        	<apex:outputLabel></apex:outputLabel>
+        	<apex:outputText value="{!err}"></apex:outputText>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+        	<apex:commandButton value="Add" action="{!addition}"/>
+            <apex:commandButton value="Divide" action="{!division}"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>
